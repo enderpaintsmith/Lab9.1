@@ -1,7 +1,9 @@
 
 import type { ReactNode } from "react";
 
+// An alert must be one of these four types.
 export type AlertType = "success" | "error" | "warning" | "info";
+
 
 export interface AlertBoxProps {
   type: AlertType;
@@ -40,5 +42,6 @@ export interface ProductDisplayProps {
   showDescription?: boolean;
   showStockStatus?: boolean;
   onAddToCart?: (productId: string) => void;
+  // This component can optionally receive additional content to display inside it.
   children?: ReactNode;
 }

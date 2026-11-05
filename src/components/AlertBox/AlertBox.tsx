@@ -7,7 +7,7 @@ export function AlertBox({
   onClose,
   children
 }: AlertBoxProps) {
-
+// Style the alert using the colors associated with type
   const alertStyles = {
     success: {
       backgroundColor: "#d4edda",
@@ -52,7 +52,7 @@ export function AlertBox({
           </button>
         )}
       </div>
-
+      //Display any additional content passed between the opening and closing AlertBox tags.
       {children}
     </div>
   );
