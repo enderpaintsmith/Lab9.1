@@ -26,10 +26,12 @@ function App() {
   const [cartMessage, setCartMessage] = useState("");
 
   function handleAddToCart(productId: string) {
+    // Update the shopping cart by taking everything already in it and adding the new product ID to the end.
     setCart((previousCart) => [...previousCart, productId]);
+    // Update state with temp. literals
     setCartMessage(`${product.name} added to cart!`);
   }
-
+// Create a function called handleEdit that takes a user's ID and displays a popup saying ‘Editing profile for user’ followed by that ID.
   function handleEdit(userId: string) {
     alert(`Editing profile for user ${userId}`);
   }
@@ -44,6 +46,7 @@ function App() {
         <AlertBox
           type="success"
           message="Your profile has been updated successfully!"
+          // When AlertBox calls its onClose function, change showAlert to false.
           onClose={() => setShowAlert(false)}
         >
           <p>You can now continue using the application.</p>
