@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 // An alert must be one of these four types.
 export type AlertType = "success" | "error" | "warning" | "info";
 
-
+// Defines props that AlertBox can receive
 export interface AlertBoxProps {
   type: AlertType;
   message: string;
