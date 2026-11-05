@@ -4,7 +4,10 @@ import { AlertBox } from "./components/AlertBox/AlertBox";
 import { UserProfileCard } from "./components/UserProfileCard/UserProfileCard";
 import { ProductDisplay } from "./components/ProductDisplay/ProductDisplay";
 import type { User, Product } from "./types";
-
+//passing props 
+// component composition 
+// using children
+// conditional rendering based on state
 const user: User = {
   id: "1",
   name: "Alex Johnson",
