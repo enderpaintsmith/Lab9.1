@@ -52,6 +52,8 @@ function App() {
           // When AlertBox calls its onClose function, change showAlert to false.
           onClose={() => setShowAlert(false)}
         >
+          // child prop -- 
+          // Take whatever I put between these component tags and show in component children
           <p>You can now continue using the application.</p>
         </AlertBox>
       )}
