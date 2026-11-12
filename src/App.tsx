@@ -5,9 +5,8 @@ import { UserProfileCard } from "./components/UserProfileCard/UserProfileCard";
 import { ProductDisplay } from "./components/ProductDisplay/ProductDisplay";
 import type { User, Product } from "./types";
 
-// This application demonstrates:
-// Passing props, component composition, children,
-// and conditional rendering based on state.
+// This application demonstrates how the three components
+// work together by passing props and handling user interactions.
 
 // Define the user data using the User interface.
 const user: User = {
@@ -17,7 +16,7 @@ const user: User = {
   role: "Software Developer"
 };
 
-// Define the product data using Product interface.
+// Define the product data using the Product interface.
 const product: Product = {
   id: "101",
   name: "Wireless Headphones",
@@ -36,12 +35,12 @@ function App() {
   // Stores the message displayed after adding a product.
   const [cartMessage, setCartMessage] = useState("");
 
-  // Adds a product ID to the cart and updates the message.
+  // Adds a product to the cart and updates the confirmation message.
   function handleAddToCart(productId: string) {
-    // Keep the existing cart items and add the new product ID.
+    // Keeps the existing cart items and adds the new product ID.
     setCart((previousCart) => [...previousCart, productId]);
 
-    // Use a template literal to include the product name.
+    // Displays the product name in the confirmation message.
     setCartMessage(`${product.name} added to cart!`);
   }
 
@@ -56,26 +55,26 @@ function App() {
 
       <h2>AlertBox Component</h2>
 
-      {/* Only display this alert when showAlert is true. */}
+      {/* Displays the success alert only when showAlert is true. */}
       {showAlert && (
         <AlertBox
           type="success"
           message="Your profile has been updated successfully!"
           onClose={() => setShowAlert(false)}
         >
-          {/* This paragraph is passed as the children prop. */}
+          {/* Additional content passed through the children prop. */}
           <p>You can now continue using the application.</p>
         </AlertBox>
       )}
 
-      {/* These alerts demonstrate different alert types. */}
+      {/* Demonstrates the other three alert types. */}
       <AlertBox type="error" message="Something went wrong." />
       <AlertBox type="warning" message="Please review your information." />
       <AlertBox type="info" message="Your account settings are available." />
 
       <h2>UserProfileCard Component</h2>
 
-      {/* Pass user data and the edit function as props. */}
+      {/* Passes user information and the edit function as props. */}
       <UserProfileCard user={user} onEdit={handleEdit}>
         {/* Additional content passed through children. */}
         <p>Member of the development team.</p>
@@ -83,16 +82,16 @@ function App() {
 
       <h2>ProductDisplay Component</h2>
 
-      {/* Pass product data and the add-to-cart function as props. */}
+      {/* Passes product information and the cart function as props. */}
       <ProductDisplay product={product} onAddToCart={handleAddToCart}>
         {/* Additional content passed through children. */}
         <p>Free shipping available!</p>
       </ProductDisplay>
 
-      {/* Display the number of products currently in the cart. */}
+      {/* Displays the number of products added to the cart. */}
       <h3>Shopping Cart: {cart.length} items</h3>
 
-      {/* Only display this alert when cartMessage has a value. */}
+      {/* Displays a confirmation alert after adding a product. */}
       {cartMessage && (
         <AlertBox
           type="success"

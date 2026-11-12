@@ -1,7 +1,7 @@
 
 import type { UserProfileCardProps } from "../../types";
 
-// Create the UserProfileCard component using the props
+// Creates the UserProfileCard component using the props
 // defined in the UserProfileCardProps interface.
 export function UserProfileCard({
   user,
@@ -19,7 +19,7 @@ export function UserProfileCard({
         marginBottom: "16px"
       }}
     >
-      {/* Only display the avatar if the user has an avatarUrl. */}
+      {/* Only displays the avatar if the user has an avatarUrl. */}
       {user.avatarUrl && (
         <img
           src={user.avatarUrl}
@@ -29,21 +29,25 @@ export function UserProfileCard({
           style={{ borderRadius: "50%" }}
         />
       )}
-    {/* Display the user's name. */}
+
+      {/* Displays the user's name. */}
       <h2>{user.name}</h2>
 
+      {/* Displays the email and role if their props are true. */}
+      {/* Both are set to true by default. */}
       {showEmail && <p>Email: {user.email}</p>}
 
       {showRole && <p>Role: {user.role}</p>}
 
-      {/* Only show the edit button if onEdit was provided. */}
-      {/* When clicked, pass the user's ID to the onEdit function. */}
+      {/* Only displays the Edit Profile button if onEdit was provided. */}
+      {/* When clicked, passes the user's ID to the onEdit function. */}
       {onEdit && (
         <button onClick={() => onEdit(user.id)}>
           Edit Profile
         </button>
       )}
-      {/* Display additional content passed from the parent component. */}
+
+      {/* Displays additional content passed from the parent component. */}
       {children}
     </div>
   );
