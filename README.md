@@ -2,60 +2,106 @@
 
 ## Project Overview
 
-For this lab, I developed a React component library using TypeScript. The objective was to create reusable components that could be used across different applications while practicing TypeScript interfaces, prop handling, and component composition. I also worked on making the components flexible enough to handle different situations without having to rewrite the same code.
+For this lab, I developed a small React application using TypeScript. The objective was to create reusable components while practicing interfaces, props, and component composition.
 
-The project consists of three components: AlertBox, UserProfileCard, and ProductDisplay. Each component serves a different purpose while following the same general approach to organization, functionality, and reusability.
+The project consists of three main components: AlertBox, UserProfileCard, and ProductDisplay. Each component handles a different function, and I used App.tsx to bring everything together and demonstrate how they work.
 
 ## Technologies Used
 
-I used React and TypeScript to develop the components, along with Vite to set up and run the application. I also used Vitest, React Testing Library, and jsdom to create automated tests and verify that the components functioned correctly.
+I used React and TypeScript to build the application, along with Vite to run the project. I also used Vitest and React Testing Library to test the components.
 
 ## Components
 
 ### AlertBox
 
-The AlertBox component displays notifications based on four different types: success, error, warning, and info. Each type has its own styling to distinguish the message being displayed. The component accepts a required type and message, along with an optional onClose function that allows the user to dismiss the notification. It also supports additional content through the children prop, making it useful for different types of notifications.
+The AlertBox component displays four types of notifications: success, error, warning, and info. Each notification has its own colors to help distinguish the message being displayed.
+
+I used an object called `alertStyles` to store the colors for each notification type. The component uses the selected type to determine which colors to display.
+
+The component also accepts an optional close function and additional content through `children`. When a close function is provided, a button appears that allows the user to dismiss the notification.
 
 ### UserProfileCard
 
-The UserProfileCard component displays user information, including a name, email address, and role. It also supports an optional profile image and an Edit Profile button. I used optional props to control whether the email and role are displayed, along with a callback function to handle editing a user profile. The component also accepts additional content through the children prop.
+The UserProfileCard component displays a user's name, email address, and role. It can also display a profile image if one is provided.
+
+I included optional settings to control whether the email and role are displayed. Both are shown by default.
+
+The component also includes an optional Edit Profile button. For this lab, clicking the button displays a popup with the user's ID rather than opening an editing form.
+
+Additional content can also be displayed using `children`.
 
 ### ProductDisplay
 
-The ProductDisplay component displays product information, including its name, price, description, and availability. It includes optional props that determine whether the description and stock status are visible. I also implemented an Add to Cart button that can trigger a callback function when clicked. If the product is out of stock, the button becomes disabled. Like the other components, it supports additional content through the children prop.
+The ProductDisplay component displays a product's name, price, description, and availability.
+
+I used `toFixed(2)` to display the price with two decimal places. I also included optional settings to control whether the description and stock status appear.
+
+The Add to Cart button allows the user to add a product to the cart. The button becomes disabled if the product is out of stock.
+
+The component also supports an optional product image and additional content through `children`.
+
+## How the Application Works
+
+I used App.tsx to display the three components and handle some basic interactions.
+
+The application uses `useState` to keep track of whether the first success alert is visible, which products have been added to the cart, and the message displayed when a product is added.
+
+When the user clicks Add to Cart, the product's ID is added to an array. The application then updates the cart count and displays a confirmation message.
+
+I also used conditional rendering to show or hide certain elements. For example, the first success alert disappears when the user clicks its close button.
+
+The components receive their information through props. I used TypeScript interfaces to define what information each component needs, including which properties are optional.
 
 ## Running the Project
 
-The project uses npm to manage dependencies and Vite as its development server. After installing the dependencies with `npm install`, the application can be started using `npm run dev`. A production build can be generated using `npm run build`.
+Install the project dependencies:
+
+`npm install`
+
+Start the development server:
+
+`npm run dev`
+
+Create a production build:
+
+`npm run build`
 
 ## Testing
 
-I used Vitest and React Testing Library to create automated tests for all three components. The tests verify that the components display the correct information, handle optional props, respond to user interactions, and render additional content.
+I used Vitest and React Testing Library to test the three main components. The tests check whether information displays correctly, optional features work, and buttons respond as expected.
 
-I tested the AlertBox component with four tests, UserProfileCard with five tests, and ProductDisplay with seven tests. All 16 tests passed successfully. The complete test suite can be run using `npx vitest run`.
+I created four tests for AlertBox, five for UserProfileCard, and seven for ProductDisplay.
+
+All 16 automated tests passed successfully. I also confirmed that the project builds without errors and tested the application in the browser.
+
+To run the automated tests:
+
+`npx vitest run`
 
 ## Reflection
 
 ### How did you handle optional props?
 
-I used optional properties in my TypeScript interfaces to allow certain features to be included or excluded depending on how the component is being used. I also assigned default values to some props so that the components would still function without requiring every property to be passed in. This gave me more flexibility and allowed me to reuse the same components in different situations.
+I used optional properties in my TypeScript interfaces so that certain features could be included or excluded depending on how the component is used. I also assigned default values to some props so that I wouldn't have to specify every setting each time.
 
 ### What considerations went into designing the interfaces?
 
-I wanted the interfaces to be organized, straightforward, and reusable. I separated the user and product information into their own interfaces and defined the props for each component individually. This helped keep the code structured and made it easier to understand what information each component required. I also tried to make the interfaces flexible without making them unnecessarily complicated.
+I wanted to keep the interfaces organized and easy to understand. I separated the user and product information into their own interfaces and defined the props for each component. This helped me keep track of what information each component needed.
 
 ### How did you ensure type safety?
 
-I used TypeScript interfaces to define the types of data that each component accepts, including strings, booleans, objects, and callback functions. I also used a union type for the AlertBox component to limit the available notification types. This helped prevent incorrect values from being passed into the components and made it easier to identify potential errors while developing the application.
+I used TypeScript to define the types of information each component accepts, including strings, booleans, and functions. I also limited the AlertBox types to four specific values. This helped me identify incorrect values and avoid potential errors.
 
 ### What challenges did you encounter with component composition?
 
-One of the things I had to work through was understanding how the children prop works and how additional content can be passed into a component. Using ReactNode helped me understand how components can accept different types of content while keeping their original structure and functionality. This was useful for understanding how reusable components can be adapted without having to modify the component itself.
+One thing I had to work through was understanding how `children` works. I learned that I could pass additional content into a component without changing the component itself. Using `ReactNode` helped me understand how that content is defined in TypeScript.
 
 ### What did you learn from this lab?
 
-This lab gave me more experience working with React and TypeScript together. I developed a better understanding of how interfaces and props work, how to organize components, and how to make them reusable. I also gained experience with automated testing and learned how to verify component functionality beyond manually testing the application in the browser.
+This lab helped me get more comfortable working with React and TypeScript together. I practiced creating components, passing props, working with interfaces, and handling basic user interactions.
+
+I also gained more experience testing my code and making sure the application worked as expected.
 
 ## Conclusion
 
-Overall, this lab helped me build on my understanding of React, TypeScript, and component-based development. I gained more experience structuring reusable components, managing props, implementing callback functions, and testing functionality. These are skills that I can continue developing and applying to larger projects as I progress through the software engineering program.
+Overall, this lab helped me better understand how React components are organized and how they work together. I was able to practice building reusable components, managing props, and testing their functionality. These are skills I can continue developing as I work on larger applications.
