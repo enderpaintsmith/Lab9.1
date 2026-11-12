@@ -98,10 +98,10 @@ One thing I had to work through was understanding how `children` works. I learne
 
 ### What did you learn from this lab?
 
-This lab helped me get more comfortable working with React and TypeScript together. I practiced creating components, passing props, working with interfaces, and handling basic user interactions.
+This lab helped me get more comfortable working with React and TypeScript together more than anything. I practiced creating components, passing props, working with interfaces, and handling basic user interactions.
 
 I also gained more experience testing my code and making sure the application worked as expected.
 
 ## Conclusion
 
-Overall, this lab helped me better understand how React components are organized and how they work together. I was able to practice building reusable components, managing props, and testing their functionality. These are skills I can continue developing as I work on larger applications.
+Overall, this lab helped me better understand how React components are organized and how they work together. I was able to practice building reusable components, managing props, and testing their functionality. These are skills I will continue developing as I work on larger applications.
