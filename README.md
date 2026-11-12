@@ -1,64 +1,38 @@
-# Lab 9.1: Component Basics
+# Lab 10.1: React Counter with useEffect
 
 ## Project Overview
 
-For this lab, I developed a small React application using TypeScript. The objective was to create reusable components while practicing interfaces, props, and component composition.
+For this lab, I developed a React counter application using `useState` and `useEffect`. The objective was to practice managing state, handling side effects, and understanding how React updates components when values change.
 
-The project consists of three main components: AlertBox, UserProfileCard, and ProductDisplay. Each component handles a different function, and I used App.tsx to bring everything together and demonstrate how they work.
+The application includes basic counter controls along with several additional features to make it more interactive.
 
-## Technologies Used
+## Features and Functionality
 
-I used React and TypeScript to build the application, along with Vite to run the project. I also used Vitest and React Testing Library to test the components.
+The counter starts at 0 and allows the user to increase, decrease, or reset the count.
 
-## Components
+I also implemented the following features:
 
-### AlertBox
+- **Count History:** Keeps track of previous count values and displays them in a list.
+- **Auto-Save:** Uses `useEffect` to save the current count to local storage when it changes.
+- **Keyboard Controls:** Allows the user to increase the count with ArrowUp and decrease it with ArrowDown.
+- **Reset:** Returns the count to 0 and clears the count history.
+- **Step Input:** Allows the user to choose how much the count increases or decreases.
 
-The AlertBox component displays four types of notifications: success, error, warning, and info. Each notification has its own colors to help distinguish the message being displayed.
+## React Hooks and Implementation
 
-I used an object called `alertStyles` to store the colors for each notification type. The component uses the selected type to determine which colors to display.
+I used `useState` to manage the current count, count history, and step value.
 
-The component also accepts an optional close function and additional content through `children`. When a close function is provided, a button appears that allows the user to dismiss the notification.
+I used `useEffect` to handle saving the count and managing keyboard event listeners. I also worked with dependency arrays to control when effects run and cleanup functions to remove event listeners when they are no longer needed.
 
-### UserProfileCard
-
-The UserProfileCard component displays a user's name, email address, and role. It can also display a profile image if one is provided.
-
-I included optional settings to control whether the email and role are displayed. Both are shown by default.
-
-The component also includes an optional Edit Profile button. For this lab, clicking the button displays a popup with the user's ID rather than opening an editing form.
-
-Additional content can also be displayed using `children`.
-
-### ProductDisplay
-
-The ProductDisplay component displays a product's name, price, description, and availability.
-
-I used `toFixed(2)` to display the price with two decimal places. I also included optional settings to control whether the description and stock status appear.
-
-The Add to Cart button allows the user to add a product to the cart. The button becomes disabled if the product is out of stock.
-
-The component also supports an optional product image and additional content through `children`.
-
-## How the Application Works
-
-I used App.tsx to display the three components and handle some basic interactions.
-
-The application uses `useState` to keep track of whether the first success alert is visible, which products have been added to the cart, and the message displayed when a product is added.
-
-When the user clicks Add to Cart, the product's ID is added to an array. The application then updates the cart count and displays a confirmation message.
-
-I also used conditional rendering to show or hide certain elements. For example, the first success alert disappears when the user clicks its close button.
-
-The components receive their information through props. I used TypeScript interfaces to define what information each component needs, including which properties are optional.
+For the counter functions, I practiced updating state based on its previous value rather than directly changing the existing state.
 
 ## Running the Project
 
-Install the project dependencies:
+Install dependencies:
 
 `npm install`
 
-Start the development server:
+Start the application:
 
 `npm run dev`
 
@@ -66,42 +40,10 @@ Create a production build:
 
 `npm run build`
 
-## Testing
-
-I used Vitest and React Testing Library to test the three main components. The tests check whether information displays correctly, optional features work, and buttons respond as expected.
-
-I created four tests for AlertBox, five for UserProfileCard, and seven for ProductDisplay.
-
-All 16 automated tests passed successfully. I also confirmed that the project builds without errors and tested the application in the browser.
-
-To run the automated tests:
-
-`npx vitest run`
-
 ## Reflection
 
-### How did you handle optional props?
+This lab helped me better understand how `useState` and `useEffect` work together. I practiced managing multiple state values, updating the counter based on user interactions, and using effects for functionality outside of the normal rendering process.
 
-I used optional properties in my TypeScript interfaces so that certain features could be included or excluded depending on how the component is used. I also assigned default values to some props so that I wouldn't have to specify every setting each time.
+One of the more important parts was understanding when an effect runs and why cleanup functions are necessary, particularly when working with keyboard events.
 
-### What considerations went into designing the interfaces?
-
-I wanted to keep the interfaces organized and easy to understand. I separated the user and product information into their own interfaces and defined the props for each component. This helped me keep track of what information each component needed.
-
-### How did you ensure type safety?
-
-I used TypeScript to define the types of information each component accepts, including strings, booleans, and functions. I also limited the AlertBox types to four specific values. This helped me identify incorrect values and avoid potential errors.
-
-### What challenges did you encounter with component composition?
-
-One thing I had to work through was understanding how `children` works. I learned that I could pass additional content into a component without changing the component itself. Using `ReactNode` helped me understand how that content is defined in TypeScript.
-
-### What did you learn from this lab?
-
-This lab helped me get more comfortable working with React and TypeScript together more than anything. I practiced creating components, passing props, working with interfaces, and handling basic user interactions.
-
-I also gained more experience testing my code and making sure the application worked as expected.
-
-## Conclusion
-
-Overall, this lab helped me better understand how React components are organized and how they work together. I was able to practice building reusable components, managing props, and testing their functionality. These are skills I will continue developing as I work on larger applications.
+Overall, this lab gave me more experience building interactive React components and managing state as an application becomes more complex.
